@@ -1,14 +1,7 @@
 :root{
-    /* Brazil flag palette */
     --green:#009b3a; --yellow:#ffdf00; --blue:#002776; --white:#ffffff;
-  
-    /* Brighter, greener UI */
-    --bg:#052d17;         /* deep green base */
-    --panel:transparent;  /* let flag stripes show through */
-    --text:#f7fafb; --muted:#d0d6df; --beige:#f7efd8;
-    --accent:var(--yellow);
-    --line:#1a3324; --card:#0f2416;
-  
+    --bg:#052d17; --panel:transparent; --text:#f7fafb; --muted:#d0d6df; --beige:#f7efd8;
+    --accent:var(--yellow); --line:#1a3324; --card:#0f2416;
     --container:1100px; --radius:16px; --shadow:0 12px 30px #00000035;
   }
   
@@ -19,67 +12,70 @@
     color:var(--text); background:var(--bg); line-height:1.6;
     -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
   }
-  .container{width:min(92%,var(--container)); margin-inline:auto}
+  .container{ width:min(92%,var(--container)); margin-left:auto; margin-right:auto }
   
-  /* rotating flag background (more visible) */
+  /* header */
+  .site-header{
+    position:sticky; top:0; z-index:40;
+    backdrop-filter:blur(8px) saturate(130%);
+    background: rgba(0,0,0,0.25);
+    border-bottom:1px solid var(--line);
+    contain: paint;
+  }
+  .header-inner{display:flex; align-items:center; justify-content:center; gap:32px; padding:14px 0}
+  .logo{margin:0; font-weight:800; letter-spacing:.2px; text-align:center}
+  .nav{display:flex; gap:18px}
+  .nav a{color:var(--muted); text-decoration:none; font-weight:600}
+  .nav a:hover{color:var(--text)}
+  
+  /* sections */
+  .section{ padding:clamp(72px,8vw,120px) 0; background:transparent; border-top:1px solid var(--line) }
+  .section+.section{ border-top:none }
+  .section-title{
+    margin:0 0 8px; font-size:clamp(22px,3.2vw,36px); font-weight:800;
+    background: linear-gradient(90deg, var(--yellow), var(--green), var(--blue));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .section-sub{ color:var(--muted); margin:0 0 22px }
+  .lead{ color:var(--beige); max-width:66ch }
+  
+  /* rotating flag background */
   .flag-bg{
-    position:fixed; inset:-30% -10%; z-index:-1; opacity:.28;
+    position:fixed; inset:-30% -10%; z-index:-2; opacity:.28;
     background:linear-gradient(90deg, var(--green) 0 33%, var(--yellow) 33% 66%, var(--blue) 66% 100%);
     transform: rotate(8deg) scale(1.1);
     filter:saturate(120%) contrast(105%);
     pointer-events:none;
   }
   
-  /* header */
-  .site-header{position:sticky; top:0; z-index:40; backdrop-filter:blur(8px) saturate(130%);
-    background:color-mix(in oklab, var(--bg), #fff 6%); border-bottom:1px solid var(--line);}
-  .header-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
-  .logo{margin:0; font-weight:800; letter-spacing:.2px}
-  .nav a{color:var(--muted); text-decoration:none; margin-left:18px; font-weight:600}
-  .nav a:hover{color:var(--text)}
-  
-  /* sections (transparent so flag shows) */
-  .section{padding:clamp(72px,8vw,120px) 0; background:transparent; border-top:1px solid var(--line)}
-  .section+ .section{border-top:none}
-  .section.alt{background:transparent}
-  .section-title{
-    margin:0 0 8px; font-size:clamp(22px,3.2vw,36px); font-weight:800;
-    background: linear-gradient(90deg, var(--yellow), var(--green), var(--blue));
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  }
-  .section-sub{color:var(--muted); margin:0 0 22px}
-  .lead{color:var(--beige); max-width:66ch}
-  
   /* hero */
-  .hero{position:relative; overflow:hidden; text-align:center}
-  .hero-inner{display:grid; place-items:center; gap:12px; padding:clamp(110px,18vh,220px) 0}
+  .hero{ position:relative; overflow:hidden; text-align:center }
+  .hero-inner{ display:grid; place-items:center; gap:12px; padding:clamp(110px,18vh,220px) 0 }
   .hero-title{
     font-size:clamp(36px,8vw,96px); margin:0; font-weight:800; letter-spacing:.2px;
     background: linear-gradient(90deg, var(--yellow), var(--green), var(--blue));
     -webkit-background-clip:text; -webkit-text-fill-color:transparent;
   }
-  .hero-sub{color:var(--muted)}
-  .blob{position:absolute; border-radius:50%; filter:blur(14px); opacity:.55; pointer-events:none}
-  .b1{width:220px;height:220px;top:8%;left:6%; background:radial-gradient(circle at 30% 30%, var(--yellow), transparent 70%)}
-  .b2{width:240px;height:240px;top:22%;right:26%; background:radial-gradient(circle at 50% 50%, var(--green),  transparent 70%)}
-  .b3{width:260px;height:260px;bottom:6%;right:8%; background:radial-gradient(circle at 70% 70%, var(--blue),   transparent 70%)}
+  .hero-sub{ color:var(--muted) }
+  .blob{ position:absolute; border-radius:50%; filter:blur(14px); opacity:.55; pointer-events:none }
+  .b1{ width:220px;height:220px; top:8%; left:6%;  background:radial-gradient(circle at 30% 30%, var(--yellow), transparent 70%) }
+  .b2{ width:240px;height:240px; top:22%; right:26%; background:radial-gradient(circle at 50% 50%, var(--green),  transparent 70%) }
+  .b3{ width:260px;height:260px; bottom:6%; right:8%; background:radial-gradient(circle at 70% 70%, var(--blue),   transparent 70%) }
   
-  /* stars in hero */
-  .stars{position:absolute; inset:0; pointer-events:none}
-  .star{position:absolute; width:6px; height:6px; border-radius:50%; background:var(--white); opacity:.9; filter:drop-shadow(0 2px 6px #0007)}
+  /* stars + glitter */
+  .stars, .sparkle-layer{ position:absolute; inset:0; pointer-events:none }
+  .star{ position:absolute; width:6px; height:6px; border-radius:50%; background:var(--white); opacity:.9; filter:drop-shadow(0 2px 6px #0007) }
+  .sparkle{ position:absolute; width:6px; height:6px; border-radius:50%;
+    background: radial-gradient(circle, #fff, #ffffffa0 40%, #ffffff00 70%); filter:drop-shadow(0 2px 6px #0006) }
   
-  /* postcards grid */
-  .pc-grid{
-    display:grid; gap:22px;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  }
+  /* postcards */
+  .pc-grid{ display:grid; gap:22px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)) }
   .postcard{
     background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
     overflow:hidden; box-shadow:var(--shadow); cursor:pointer; transform-origin:center;
     transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
   }
-  .postcard:hover{ transform:translateY(-3px) scale(1.01); box-shadow:0 18px 40px #00000045;
-    border-color:color-mix(in oklab,var(--yellow),#fff 20%) }
+  .postcard:hover{ transform:translateY(-3px) scale(1.01); box-shadow:0 18px 40px #00000045; border-color:rgba(255,223,0,0.2) }
   .pc-media{ aspect-ratio:3/2; background:#0b0c10; overflow:hidden }
   .pc-media img{ width:100%; height:100%; object-fit:cover; transform:scale(1); transition:transform .35s ease }
   .postcard:hover .pc-media img{ transform:scale(1.06) }
@@ -87,34 +83,43 @@
   .pc-caption h4{ margin:2px 0 6px; font-size:18px }
   .pc-caption p{ margin:0; color:var(--muted) }
   
-  /* viewer (modal) */
+  /* route */
+  .route-wrap{ position:relative; width:100%; padding: 8px 0 0 }
+  .route-svg{ width:100%; height:320px; display:block }
+  .city-label{ font: 600 14px/1 "Inter",system-ui; fill: var(--text) }
+  
+  /* viewer + confetti */
   .viewer{
     position:fixed; inset:0; display:grid; place-items:center; background:#0b0d12cc;
     opacity:0; visibility:hidden; pointer-events:none; z-index:100;
   }
   .viewer.show{ opacity:1; visibility:visible; pointer-events:auto }
-  .viewer-fig{ margin:0; width:min(92vw, 980px); }
+  .viewer-fig{ margin:0; width:min(92vw, 980px); position:relative; z-index:3 }
   .viewer-fig img{ width:100%; aspect-ratio:3/2; object-fit:cover; border-radius:18px; box-shadow:0 22px 60px #0008 }
   .viewer-cap{ margin-top:12px; color:var(--muted) }
   .viewer-close{
     position:absolute; top:22px; right:22px; width:42px; height:42px;
     border-radius:999px; border:1px solid var(--line); background:#19202a; color:#fff;
-    font-size:26px; line-height:1; cursor:pointer; box-shadow:0 8px 20px #0005;
+    font-size:26px; line-height:1; cursor:pointer; box-shadow:0 8px 20px #0005; z-index:4;
   }
+  .confetti{ position:absolute; inset:0; z-index:5; pointer-events:none }
   
-  /* plane */
-  .plane{
-    position:absolute;
-    left:-14%; top:12%;
-    width:120px; height:auto;
-    color:var(--white);
-    opacity:.95;
-    filter:drop-shadow(0 8px 20px #0006);
-    transform-origin:50% 50%;
+  /* flag sphere */
+  .flagball {
+    position: absolute;
+    left: -16%;
+    top: 12%;
+    width: 90px;
+    height: auto;
+    opacity: .95;
+    filter: drop-shadow(0 8px 20px #0006);
+    transform-origin: center;
+    z-index: 9999; /* much higher to ensure it’s on top */
+    pointer-events: none; /* optional: avoids blocking clicks */
   }
   
   /* footer */
-  .site-footer{ text-align:center; color:var(--muted); padding:22px 0; background:color-mix(in oklab, var(--bg), #000 10%); border-top:1px solid var(--line) }
+  .site-footer{ text-align:center; color:var(--muted); padding:22px 0; background:rgba(0,0,0,0.1); border-top:1px solid var(--line) }
   
   /* a11y motion */
   @media (prefers-reduced-motion: reduce){

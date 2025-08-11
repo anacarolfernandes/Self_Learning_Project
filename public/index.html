@@ -19,7 +19,7 @@
   <script defer src="js/main.js"></script>
 </head>
 <body>
-  <!-- subtle rotating flag background -->
+  <!-- rotating flag backdrop -->
   <div class="flag-bg" aria-hidden="true"></div>
 
   <header class="site-header">
@@ -27,6 +27,7 @@
       <h1 class="logo">Brazil Travel Postcards</h1>
       <nav class="nav">
         <a href="#gallery">Gallery</a>
+        <a href="#route">Route</a>
         <a href="#about">About</a>
       </nav>
     </div>
@@ -36,15 +37,16 @@
     <!-- HERO -->
     <section class="section hero" id="hero">
       <div class="container hero-inner">
-        <h2 class="hero-title">Little moments, big vibes.</h2>
-        <p class="hero-sub">Click a postcard to open it full screen.</p>
+        <h2 class="hero-title" data-split>Little moments, big vibes.</h2>
+        <p class="hero-sub">Hover the title. Click a postcard to open it full screen.</p>
       </div>
 
-      <!-- blobs + stars -->
+      <!-- motion layers -->
       <div class="blob b1" aria-hidden="true"></div>
       <div class="blob b2" aria-hidden="true"></div>
       <div class="blob b3" aria-hidden="true"></div>
       <div class="stars" id="stars" aria-hidden="true"></div>
+      <div class="sparkle-layer" id="sparkleLayer" aria-hidden="true"></div>
     </section>
 
     <!-- GALLERY -->
@@ -55,59 +57,98 @@
 
         <div class="pc-grid">
           <!-- Cuiabá -->
-          <article class="postcard"
-            data-img="assets/images/cuiaba.jpg"
-            data-title="Cuiabá"
-            data-note="Gateway to the Pantanal and Chapada dos Guimarães — nature, heat, and warm hospitality.">
+          <article class="postcard" data-img="assets/images/cuiaba.jpg" data-title="Cuiabá" data-note="Gateway to the Pantanal and Chapada dos Guimarães, nature, heat, and warm hospitality.">
             <div class="pc-media"><img src="assets/images/cuiaba.jpg" alt="Cuiabá" /></div>
-            <div class="pc-caption"><h4>Cuiabá</h4><p>“Heart of Brazil’s wild beauty.”</p></div>
+            <div class="pc-caption"><h4>Cuiabá</h4><p>Heart of Brazil’s wild beauty.</p></div>
           </article>
 
-          <!-- Rio de Janeiro -->
-          <article class="postcard"
-            data-img="assets/images/rio.jpg"
-            data-title="Rio de Janeiro"
-            data-note="Where mountains meet the sea, and samba meets sunsets.">
+          <!-- Rio -->
+          <article class="postcard" data-img="assets/images/rio.jpg" data-title="Rio de Janeiro" data-note="Where mountains meet the sea, and samba meets sunsets.">
             <div class="pc-media"><img src="assets/images/rio.jpg" alt="Rio de Janeiro" /></div>
-            <div class="pc-caption"><h4>Rio de Janeiro</h4><p>“A cidade maravilhosa.”</p></div>
+            <div class="pc-caption"><h4>Rio de Janeiro</h4><p>The wonderful city.</p></div>
           </article>
 
           <!-- São Paulo -->
-          <article class="postcard"
-            data-img="assets/images/sao-paulo.jpg"
-            data-title="São Paulo"
-            data-note="Cultural and culinary energy, 24/7 — galleries, coffee, neon.">
+          <article class="postcard" data-img="assets/images/sao-paulo.jpg" data-title="São Paulo" data-note="Cultural and culinary energy, 24/7, galleries, coffee, neon.">
             <div class="pc-media"><img src="assets/images/sao-paulo.jpg" alt="São Paulo" /></div>
-            <div class="pc-caption"><h4>São Paulo</h4><p>“The city that never sleeps.”</p></div>
+            <div class="pc-caption"><h4>São Paulo</h4><p>The city that never sleeps.</p></div>
           </article>
 
           <!-- Salvador -->
-          <article class="postcard"
-            data-img="assets/images/salvador.jpg"
-            data-title="Salvador"
-            data-note="Afro-Brazilian rhythms, colonial streets, ocean breeze.">
+          <article class="postcard" data-img="assets/images/salvador.jpg" data-title="Salvador" data-note="Afro-Brazilian rhythms, colonial streets, ocean breeze. Even Michael Jakson went there!">
             <div class="pc-media"><img src="assets/images/salvador.jpg" alt="Salvador" /></div>
-            <div class="pc-caption"><h4>Salvador</h4><p>“Colors, flavors, and drums.”</p></div>
+            <div class="pc-caption"><h4>Salvador</h4><p>Colors, flavors, and drums.</p></div>
           </article>
 
           <!-- Florianópolis -->
-          <article class="postcard"
-            data-img="assets/images/florianopolis.jpg"
-            data-title="Florianópolis"
-            data-note="Beaches, trails, and seafood — the magic island.">
+          <article class="postcard" data-img="assets/images/florianopolis.jpg" data-title="Florianópolis" data-note="Beaches, trails, and seafood, the magic island.">
             <div class="pc-media"><img src="assets/images/florianopolis.jpg" alt="Florianópolis" /></div>
-            <div class="pc-caption"><h4>Florianópolis</h4><p>“Ilha da magia.”</p></div>
+            <div class="pc-caption"><h4>Florianópolis</h4><p>The Magic Island</p></div>
           </article>
 
           <!-- Manaus -->
-          <article class="postcard"
-            data-img="assets/images/manaus.jpg"
-            data-title="Manaus"
-            data-note="Meeting of the waters — gateway to the Amazon rainforest.">
+          <article class="postcard" data-img="assets/images/manaus.jpg" data-title="Manaus" data-note="Meeting of the waters, gateway to the Amazon rainforest.">
             <div class="pc-media"><img src="assets/images/manaus.jpg" alt="Manaus" /></div>
-            <div class="pc-caption"><h4>Manaus</h4><p>“Where rivers embrace.”</p></div>
+            <div class="pc-caption"><h4>Manaus</h4><p>Where rivers embrace.</p></div>
           </article>
         </div>
+      </div>
+    </section>
+
+    <!-- ROUTE (pinned) -->
+    <section class="section route" id="route">
+      <div class="container">
+        <h3 class="section-title">Route</h3>
+        <p class="section-sub">Cuiabá → São Paulo → Rio → Florianópolis → Salvador → Manaus</p>
+      </div>
+
+      <div class="route-wrap">
+        <svg class="route-svg" viewBox="0 0 1200 320" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <defs>
+            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#ffdf00"/>
+              <stop offset="50%" stop-color="#009b3a"/>
+              <stop offset="100%" stop-color="#002776"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Path roughly following a plausible arc across Brazil -->
+          <!-- Cuiabá(360,190) → São Paulo(720,220) → Rio(820,170) → Floripa(760,260) → Salvador(985,130) → Manaus(240,90) -->
+          <path id="routePath"
+            d="M360,190
+               C520,170 650,205 720,220
+               S820,170 820,170
+               C800,205 780,230 760,260
+               C860,210 930,165 985,130
+               C820,90 560,70 240,90"
+            fill="none" stroke="url(#grad)" stroke-width="6" stroke-linecap="round"/>
+
+          <!-- City dots -->
+          <g class="city" transform="translate(360,190)">
+            <circle r="8" fill="#ffdf00" stroke="#0b0d12" stroke-width="2"/>
+            <text x="0" y="-16" text-anchor="middle" class="city-label">Cuiabá</text>
+          </g>
+          <g class="city" transform="translate(720,220)">
+            <circle r="8" fill="#009b3a" stroke="#0b0d12" stroke-width="2"/>
+            <text x="0" y="-16" text-anchor="middle" class="city-label">São Paulo</text>
+          </g>
+          <g class="city" transform="translate(820,170)">
+            <circle r="8" fill="#009b3a" stroke="#0b0d12" stroke-width="2"/>
+            <text x="0" y="-16" text-anchor="middle" class="city-label">Rio</text>
+          </g>
+          <g class="city" transform="translate(760,260)">
+            <circle r="8" fill="#002776" stroke="#0b0d12" stroke-width="2"/>
+            <text x="0" y="-16" text-anchor="middle" class="city-label">Florianópolis</text>
+          </g>
+          <g class="city" transform="translate(985,130)">
+            <circle r="8" fill="#ffdf00" stroke="#0b0d12" stroke-width="2"/>
+            <text x="0" y="-16" text-anchor="middle" class="city-label">Salvador</text>
+          </g>
+          <g class="city" transform="translate(240,90)">
+            <circle r="8" fill="#002776" stroke="#0b0d12" stroke-width="2"/>
+            <text x="0" y="-16" text-anchor="middle" class="city-label">Manaus</text>
+          </g>
+        </svg>
       </div>
     </section>
 
@@ -116,16 +157,19 @@
       <div class="container">
         <h3 class="section-title">About this micro-project</h3>
         <p class="lead">
-          A Brazilian-flavored gallery to practice GSAP: grid reveals, hero motion, and a full-screen viewer with confetti.
-          Add or swap images anytime — drop JPEGs in <code>public/assets/images/</code> and duplicate a card.
+          A Brazil-flavored GSAP study: animated lettering + subtle glitter, hover zoom cards, a modal viewer with confetti, and a pinned route line that draws as you scroll.
         </p>
       </div>
     </section>
   </main>
 
-  <!-- VIEWER (modal) -->
+  <!-- VIEWER -->
   <div class="viewer" id="viewer" aria-hidden="true" role="dialog" aria-label="Postcard viewer">
     <button class="viewer-close" id="viewerClose" aria-label="Close">&times;</button>
+
+    <!-- confetti above the figure -->
+    <div class="confetti" id="confettiLayer" aria-hidden="true"></div>
+
     <figure class="viewer-fig">
       <img id="viewerImg" alt="" />
       <figcaption class="viewer-cap">
@@ -134,11 +178,21 @@
       </figcaption>
     </figure>
 
-    <!-- airplane (slower fly-by) -->
-    <svg class="plane" viewBox="0 0 120 40" aria-hidden="true">
-      <path d="M6,20 L70,20 L110,12 L110,28 L70,20 Z" fill="currentColor"/>
-      <rect x="58" y="16" width="10" height="8" fill="#0b0f12" />
-      <circle cx="20" cy="20" r="2" fill="#0b0f12"/>
+    <!-- Brazilian flag sphere -->
+    <svg class="flagball" viewBox="0 0 100 100" aria-hidden="true">
+      <defs>
+        <clipPath id="clipCircle"><circle cx="50" cy="50" r="48"/></clipPath>
+        <clipPath id="blueClip"><circle cx="50" cy="50" r="20"/></clipPath>
+      </defs>
+      <g clip-path="url(#clipCircle)">
+        <rect x="0" y="0" width="100" height="100" fill="#009b3a"/>
+        <polygon points="50,18 82,50 50,82 18,50" fill="#ffdf00"/>
+        <circle cx="50" cy="50" r="20" fill="#002776"/>
+        <g clip-path="url(#blueClip)">
+          <ellipse cx="50" cy="50" rx="30" ry="6" fill="none" stroke="#ffffff" stroke-width="5" transform="rotate(-15 50 50)"/>
+        </g>
+        <circle cx="36" cy="34" r="10" fill="#ffffff" opacity="0.15"/>
+      </g>
     </svg>
   </div>
 
