@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ana · Tiny Portfolio</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- GSAP + ScrollTrigger -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    window.__DEBUG = true; /* toggle markers */
+  </script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="logo">Ana Fernandes</h1>
+      <nav class="nav">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="section hero" id="hero">
+      <div class="container hero-inner">
+        <h2 class="hero-title split" data-split>
+          Designer & Motion Enthusiast
+        </h2>
+        <p class="hero-sub" data-reveal>
+          I craft calm, story-driven web and motion experiences.
+        </p>
+        <a class="btn btn-magnetic" href="#work" data-pop>See selected work</a>
+      </div>
+
+      <!-- gradient blobs -->
+      <div class="blob b1" aria-hidden="true"></div>
+      <div class="blob b2" aria-hidden="true"></div>
+      <div class="blob b3" aria-hidden="true"></div>
+    </section>
+
+    <!-- MARQUEE -->
+    <section class="marquee-wrap" aria-hidden="true">
+      <div class="marquee">
+        <span>UI/UX</span><span>Motion</span><span>GSAP</span><span>Icons</span>
+        <span>Accessibility</span><span>Web</span><span>Branding</span>
+        <span>ScrollTrigger</span><span>Storytelling</span>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="section" id="work" data-bg="#141922">
+      <div class="container">
+        <div class="section-head">
+          <h3 class="section-title" data-reveal>Selected Work</h3>
+          <p class="section-sub" data-reveal>Three quick highlights.</p>
+        </div>
+
+        <div class="grid">
+          <article class="card" data-card data-speed="0.8">
+            <img src="assets/images/Indigo.png" alt="Indigo Motion Package cover" />
+            <div class="card-body">
+              <h4>Indigo Motion Package</h4>
+              <p>Branded transitions and animated event elements.</p>
+              <span class="pill">Motion · Branding</span>
+            </div>
+          </article>
+
+          <article class="card" data-card data-speed="1.1">
+            <img src="assets/images/icons.png" alt="Avatar Icons Collection preview" />
+            <div class="card-body">
+              <h4>Avatar Icons Collection</h4>
+              <p>Custom icon set exploring color, shape language, and clarity.</p>
+              <span class="pill">Icons · Illustration</span>
+            </div>
+          </article>
+
+          <article class="card" data-card data-speed="0.9">
+            <img src="assets/images/soft-space.png" alt="Soft Space app preview" />
+            <div class="card-body">
+              <h4>Soft Space</h4>
+              <p>Gentle UX flows supporting reflection and calm.</p>
+              <span class="pill">UX · Product</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section alt" id="about" data-bg="#151a1f">
+      <div class="container about">
+        <div>
+          <h3 class="section-title" data-reveal>About</h3>
+          <p class="lead" data-reveal>
+            I’m Ana, a designer focused on accessible, emotive interfaces.
+            I like warm palettes, soft motion, and clear hierarchy.
+          </p>
+        </div>
+        <ul class="list" aria-label="Skills">
+          <li data-reveal>UI/UX Design</li>
+          <li data-reveal>Motion Graphics</li>
+          <li data-reveal>Web (HTML/CSS/JS)</li>
+          <li data-reveal>Branding</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact" data-bg="#14161b">
+      <div class="container contact">
+        <h3 class="section-title" data-reveal>Let’s collaborate</h3>
+        <p class="lead" data-reveal>Open to internships, freelance, and collabs.</p>
+        <a class="btn btn-magnetic" href="mailto:youremail@example.com" data-pop>Email me</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> Ana Fernandes · Built with GSAP</small>
+    </div>
+  </footer>
+</body>
+</html>
