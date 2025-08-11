@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ana · Tiny Portfolio</title>
+  <title>Ana · Brazil Postcard Gallery</title>
 
   <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,22 +12,22 @@
 
   <link rel="stylesheet" href="css/style.css" />
 
-  <!-- GSAP + ScrollTrigger -->
+  <!-- GSAP -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script>
-    window.__DEBUG = true; /* toggle markers */
-  </script>
+  <script>window.__DEBUG = false;</script>
   <script defer src="js/main.js"></script>
 </head>
 <body>
+  <!-- subtle rotating flag background -->
+  <div class="flag-bg" aria-hidden="true"></div>
+
   <header class="site-header">
     <div class="container header-inner">
-      <h1 class="logo">Ana Fernandes</h1>
+      <h1 class="logo">Brazil Travel Postcards</h1>
       <nav class="nav">
-        <a href="#work">Work</a>
+        <a href="#gallery">Gallery</a>
         <a href="#about">About</a>
-        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -36,101 +36,116 @@
     <!-- HERO -->
     <section class="section hero" id="hero">
       <div class="container hero-inner">
-        <h2 class="hero-title split" data-split>
-          Designer & Motion Enthusiast
+        <h2 class="hero-title">
+          Little moments, big vibes.
         </h2>
-        <p class="hero-sub" data-reveal>
-          I craft calm, story-driven web and motion experiences.
-        </p>
-        <a class="btn btn-magnetic" href="#work" data-pop>See selected work</a>
+        <p class="hero-sub">Click a postcard to open it full screen.</p>
       </div>
 
-      <!-- gradient blobs -->
+      <!-- blobs + stars -->
       <div class="blob b1" aria-hidden="true"></div>
       <div class="blob b2" aria-hidden="true"></div>
       <div class="blob b3" aria-hidden="true"></div>
+      <div class="stars" id="stars" aria-hidden="true"></div>
     </section>
 
-    <!-- MARQUEE -->
-    <section class="marquee-wrap" aria-hidden="true">
-      <div class="marquee">
-        <span>UI/UX</span><span>Motion</span><span>GSAP</span><span>Icons</span>
-        <span>Accessibility</span><span>Web</span><span>Branding</span>
-        <span>ScrollTrigger</span><span>Storytelling</span>
-      </div>
-    </section>
-
-    <!-- WORK -->
-    <section class="section" id="work" data-bg="#141922">
+    <!-- GALLERY -->
+    <section class="section" id="gallery">
       <div class="container">
-        <div class="section-head">
-          <h3 class="section-title" data-reveal>Selected Work</h3>
-          <p class="section-sub" data-reveal>Three quick highlights.</p>
-        </div>
+        <h3 class="section-title">Postcards</h3>
+        <p class="section-sub">Hover to zoom · Click to view</p>
 
-        <div class="grid">
-          <article class="card" data-card data-speed="0.8">
-            <img src="assets/images/Indigo.png" alt="Indigo Motion Package cover" />
-            <div class="card-body">
-              <h4>Indigo Motion Package</h4>
-              <p>Branded transitions and animated event elements.</p>
-              <span class="pill">Motion · Branding</span>
-            </div>
+        <div class="pc-grid">
+          <!-- Cuiabá -->
+          <article class="postcard"
+            data-img="assets/images/cuiaba.jpg"
+            data-title="Cuiabá"
+            data-note="Gateway to the Pantanal and Chapada dos Guimarães — nature, heat, and warm hospitality.">
+            <div class="pc-media"><img src="assets/images/cuiaba.jpg" alt="Cuiabá" /></div>
+            <div class="pc-caption"><h4>Cuiabá</h4><p>“Heart of Brazil’s wild beauty.”</p></div>
           </article>
 
-          <article class="card" data-card data-speed="1.1">
-            <img src="assets/images/icons.png" alt="Avatar Icons Collection preview" />
-            <div class="card-body">
-              <h4>Avatar Icons Collection</h4>
-              <p>Custom icon set exploring color, shape language, and clarity.</p>
-              <span class="pill">Icons · Illustration</span>
-            </div>
+          <!-- Rio de Janeiro -->
+          <article class="postcard"
+            data-img="assets/images/rio.jpg"
+            data-title="Rio de Janeiro"
+            data-note="Where mountains meet the sea, and samba meets sunsets.">
+            <div class="pc-media"><img src="assets/images/rio.jpg" alt="Rio de Janeiro" /></div>
+            <div class="pc-caption"><h4>Rio de Janeiro</h4><p>“A cidade maravilhosa.”</p></div>
           </article>
 
-          <article class="card" data-card data-speed="0.9">
-            <img src="assets/images/soft-space.png" alt="Soft Space app preview" />
-            <div class="card-body">
-              <h4>Soft Space</h4>
-              <p>Gentle UX flows supporting reflection and calm.</p>
-              <span class="pill">UX · Product</span>
-            </div>
+          <!-- São Paulo -->
+          <article class="postcard"
+            data-img="assets/images/sao-paulo.jpg"
+            data-title="São Paulo"
+            data-note="Cultural and culinary energy, 24/7 — galleries, coffee, neon.">
+            <div class="pc-media"><img src="assets/images/sao-paulo.jpg" alt="São Paulo" /></div>
+            <div class="pc-caption"><h4>São Paulo</h4><p>“The city that never sleeps.”</p></div>
+          </article>
+
+          <!-- Salvador -->
+          <article class="postcard"
+            data-img="assets/images/salvador.jpg"
+            data-title="Salvador"
+            data-note="Afro-Brazilian rhythms, colonial streets, ocean breeze.">
+            <div class="pc-media"><img src="assets/images/salvador.jpg" alt="Salvador" /></div>
+            <div class="pc-caption"><h4>Salvador</h4><p>“Colors, flavors, and drums.”</p></div>
+          </article>
+
+          <!-- Florianópolis -->
+          <article class="postcard"
+            data-img="assets/images/florianopolis.jpg"
+            data-title="Florianópolis"
+            data-note="Beaches, trails, and seafood — the magic island.">
+            <div class="pc-media"><img src="assets/images/florianopolis.jpg" alt="Florianópolis" /></div>
+            <div class="pc-caption"><h4>Florianópolis</h4><p>“Ilha da magia.”</p></div>
+          </article>
+
+          <!-- Manaus -->
+          <article class="postcard"
+            data-img="assets/images/manaus.jpg"
+            data-title="Manaus"
+            data-note="Meeting of the waters — gateway to the Amazon rainforest.">
+            <div class="pc-media"><img src="assets/images/manaus.jpg" alt="Manaus" /></div>
+            <div class="pc-caption"><h4>Manaus</h4><p>“Where rivers embrace.”</p></div>
           </article>
         </div>
       </div>
     </section>
 
     <!-- ABOUT -->
-    <section class="section alt" id="about" data-bg="#151a1f">
-      <div class="container about">
-        <div>
-          <h3 class="section-title" data-reveal>About</h3>
-          <p class="lead" data-reveal>
-            I’m Ana, a designer focused on accessible, emotive interfaces.
-            I like warm palettes, soft motion, and clear hierarchy.
-          </p>
-        </div>
-        <ul class="list" aria-label="Skills">
-          <li data-reveal>UI/UX Design</li>
-          <li data-reveal>Motion Graphics</li>
-          <li data-reveal>Web (HTML/CSS/JS)</li>
-          <li data-reveal>Branding</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section" id="contact" data-bg="#14161b">
-      <div class="container contact">
-        <h3 class="section-title" data-reveal>Let’s collaborate</h3>
-        <p class="lead" data-reveal>Open to internships, freelance, and collabs.</p>
-        <a class="btn btn-magnetic" href="mailto:youremail@example.com" data-pop>Email me</a>
+    <section class="section alt" id="about">
+      <div class="container">
+        <h3 class="section-title">About this micro-project</h3>
+        <p class="lead">
+          A Brazilian-flavored gallery to practice GSAP: grid reveals, hero motion, and a full-screen viewer with confetti.
+          Add or swap images anytime — drop JPEGs in <code>public/assets/images/</code> and duplicate a card.
+        </p>
       </div>
     </section>
   </main>
 
+  <!-- VIEWER (modal) -->
+  <div class="viewer" id="viewer" aria-hidden="true" role="dialog" aria-label="Postcard viewer">
+    <button class="viewer-close" id="viewerClose" aria-label="Close">&times;</button>
+    <figure class="viewer-fig">
+      <img id="viewerImg" alt="" />
+      <figcaption class="viewer-cap">
+        <h4 id="viewerTitle"></h4>
+        <p id="viewerNote"></p>
+      </figcaption>
+    </figure>
+
+    <!-- airplane -->
+    <svg class="plane" viewBox="0 0 100 40" aria-hidden="true">
+      <path d="M5,20 L60,20 L95,10 L95,30 L60,20 Z" fill="currentColor"/>
+      <circle cx="18" cy="20" r="2" fill="#0f1114"/>
+    </svg>
+  </div>
+
   <footer class="site-footer">
     <div class="container">
-      <small>© <span id="year"></span> Ana Fernandes · Built with GSAP</small>
+      <small>© <span id="year"></span> Ana Fernandes · GSAP Mini</small>
     </div>
   </footer>
 </body>
